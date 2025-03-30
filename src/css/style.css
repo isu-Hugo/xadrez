@@ -12,6 +12,8 @@ body{
 table{
     width: 40vw;
     height: 40vw;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
 }
 
 .white{
@@ -26,16 +28,16 @@ th, td{
     width: 12.5%;
     height: 12.5%;
 
+    margin: 0px;
     padding: 0px;
 
-    border: 1px solid rgb(0, 0, 0);
-    border-radius: 5px;
+    
+    
     text-align: center;
 }
 
-span{
-    display: block;
-    font-size: 4vw; /* Ajuste conforme necessário */
-    text-align: center;
+img{
+    width: 90%;
+    height: 90%;
 }
 
