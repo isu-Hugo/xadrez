@@ -1,9 +1,9 @@
-var linhas = document.getElementsByTagName('tr');
+var linhas = document.getElementsByTagName('tr'); //remover
 var pecas = [];
-var position = [];
+var position = []; //remover
 var somMover = new Audio('./src/sounds/move-self.webm')
 
-function swap(){
+function deprecatedswap(){
     let linha = linhas[position[0]];
     let colunas = linha.getElementsByTagName('td');
     let celula = colunas[position[1]];
@@ -25,21 +25,19 @@ function swap(){
     
 
 
-
-
-
 }
 
-function move(row, col){
+
+function deprecatedmove(row, col){
     let coluna = linhas[row].getElementsByTagName('td');
     let peca = coluna[col].classList[1];
-
+    
     //coluna[col].classList.toggle('selected');
-
+    
     if(pecas.length == 0){
         pecas.push(peca);
         position.push(row, col);
-
+        
     }else if(pecas.length == 1){
         pecas.push(peca);
         position.push(row, col);
@@ -47,24 +45,54 @@ function move(row, col){
         pecas.length = 0;
         position.length = 0;
     }
+    
+}
 
+function qualPeca(id){
+    return document.getElementById(id).classList[1];
+}
 
+function move(row, col){
+    let id = `${row}${col}`;
+    
+    console.log(id);
 
-
-
-
-
-
-
-
-    if(coluna[col].classList[1] == undefined){
-        console.log("np")
-    }else{
-        console.log(coluna[col].classList[1]);
+    if(qualPeca(id) == "np" && pecas.length == 0){
+        console.log("Nada feito pq não podemos selecionar uma celula vazia :p")
+        return
     }
+
+    if(pecas.length == 0){
+        document.getElementById(id).classList.add('selected');
+    }else {
+        document.getElementById(pecas[0]).classList.remove('selected');
+    }
+
+    pecas.push(id);
+
+    if(pecas.length == 1) return;
+
+    comer(pecas[0], id);
+    pecas.length = 0;
+    
+
 
 
 }
 
+function comer(comer, essa){
+    if (comer == essa) return;
+    if (qualPeca(comer).charAt(0) == qualPeca(essa).charAt(0)) return;
+    if (qualPeca(essa).charAt(1) == 'k') alert("Fim de jogo");
+    
 
+    document.getElementById(essa).classList.remove(qualPeca(essa));
+    document.getElementById(essa).classList.add(qualPeca(comer));
+
+    document.getElementById(comer).classList.remove(qualPeca(comer));
+    document.getElementById(comer).classList.add('np');
+
+    somMover.play();
+
+}
  
