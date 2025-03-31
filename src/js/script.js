@@ -34,6 +34,8 @@ function move(row, col){
     let coluna = linhas[row].getElementsByTagName('td');
     let peca = coluna[col].classList[1];
 
+    //coluna[col].classList.toggle('selected');
+
     if(pecas.length == 0){
         pecas.push(peca);
         position.push(row, col);
