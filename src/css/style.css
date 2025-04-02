@@ -19,6 +19,7 @@ table{
     height: 40vw;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 5px;
+    border-collapse: collapse;
     
 }
 
@@ -29,9 +30,11 @@ th, td{
     margin: 0px;
     padding: 0px;
 
-    text-align: center;
+    align-content: start;
+    color: rgb(90, 89, 89);
+     
 
-    border: 1px solid rgb(0, 0, 0);
+    /* border: 1px solid rgb(0, 0, 0); */
 }
 
 
